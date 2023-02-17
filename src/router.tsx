@@ -1,7 +1,7 @@
 import { PageLoading } from '@ui/utils/PageLoading';
 import { lazy, Suspense } from 'react';
 import { createBrowserRouter } from 'react-router-dom';
-import App from './App';
+import LoginPage from './pages/LoginPage';
 
 /* Code split theme page */
 const ThemePage = lazy(async () => await import('./pages/ThemePage'));
@@ -10,7 +10,7 @@ const router = createBrowserRouter(
   [
     {
       path: '/',
-      element: <App />
+      element: <LoginPage />
     },
     {
       path: '/theme',
