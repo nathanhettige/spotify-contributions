@@ -6,12 +6,11 @@ function LoginPage() {
 
   const authRequestUrl = `${authEndpoint}?client_id=${clientId}&redirect_uri=${redirectUri}&response_type=${responseType}`;
 
-  console.log(import.meta.env);
   return (
     <div className="flex h-screen">
-      <button className="text-md btn-primary btn m-auto">
-        <a href={authRequestUrl}>Login with Spotify</a>
-      </button>
+      <a href={authRequestUrl} className="m-auto">
+        <button className="text-md btn-primary btn">Login with Spotify</button>
+      </a>
     </div>
   );
 }
