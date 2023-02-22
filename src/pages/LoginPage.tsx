@@ -1,11 +1,17 @@
-import { authRequestUrl } from '../api/auth';
+import { useSpotifyLogin } from '../api/auth';
 
 function LoginPage() {
+  const { loading, redirectToLogin } = useSpotifyLogin();
+
   return (
     <div className="flex h-screen">
-      <a href={authRequestUrl} className="m-auto">
-        <button className="text-md btn-primary btn">Login with Spotify</button>
-      </a>
+      <button
+        disabled={loading}
+        onClick={redirectToLogin}
+        className="text-md btn-primary btn m-auto"
+      >
+        Login with Spotify
+      </button>
     </div>
   );
 }
