@@ -4,6 +4,7 @@ interface Profile {
   display_name: string;
   followers: Follower;
   images: Image[];
+  id: string;
 }
 
 interface Follower {
