@@ -2,10 +2,12 @@ import { Navbar } from '@theme/components';
 import useSpotifyAuth from '../api/SpotifyAuth/useSpotifyAuth';
 import { useProfile } from '../api/SpotifyHooks/useProfile';
 
+// TODO remove query params from this page
+
 function ProfilePage() {
   const { accessToken } = useSpotifyAuth();
-  // Probably need to remove query params from this page
   const { data: profile } = useProfile(accessToken);
+
   // const { data: playlists } = useUsersPlaylists(
   //   accessToken,
   //   profile?.id as string,
@@ -15,10 +17,10 @@ function ProfilePage() {
   return (
     <>
       <Navbar />
-      <section className="mx-4 py-4">
-        <div className="flex">
+      <div className="mx-4 py-4">
+        <section className="flex">
           <div className="avatar mr-6 w-24">
-            <div className="bg-disabled text-neutral-content w-full rounded-full ring ring-[rgb(207,215,222)]">
+            <div className="text-neutral-content bg-disabled w-full rounded-full ring ring-[rgb(207,215,222)]">
               <img alt="Profile" src={profile?.images[0]?.url} />
             </div>
           </div>
@@ -28,9 +30,21 @@ function ProfilePage() {
               {profile?.followers.total} Followers
             </p>
           </div>
-        </div>
+        </section>
+
         <div className="divider"></div>
-      </section>
+
+        <section>
+          <p>Pinned</p>
+        </section>
+
+        <div className="divider"></div>
+
+        <section>
+          <p>387 contributions in the last year</p>
+          <div id="cal-heatmap"></div>
+        </section>
+      </div>
     </>
   );
 }
