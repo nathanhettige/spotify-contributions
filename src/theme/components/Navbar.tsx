@@ -15,23 +15,6 @@ const MenuIcon = () => (
   </svg>
 );
 
-const SearchIcon = () => (
-  <svg
-    xmlns="http://www.w3.org/2000/svg"
-    className="h-5 w-5"
-    fill="none"
-    viewBox="0 0 24 24"
-    stroke="currentColor"
-  >
-    <path
-      strokeLinecap="round"
-      strokeLinejoin="round"
-      strokeWidth="2"
-      d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"
-    />
-  </svg>
-);
-
 const NotificationIcon = () => (
   <svg
     xmlns="http://www.w3.org/2000/svg"
@@ -74,7 +57,7 @@ export const Navbar = () => (
         <button tabIndex={0} className="btn btn-ghost btn-circle">
           <MenuIcon />
         </button>
-        <ul className="menu menu-compact dropdown-content bg-base-100 rounded-box mt-3 w-52 p-2 shadow">
+        <ul className="menu menu-compact dropdown-content bg-base-100 rounded-box mt-3 w-52 shadow">
           {navLinks.map((link) => (
             <li key={link.path}>
               <a tabIndex={0} href={link.path}>
@@ -87,13 +70,10 @@ export const Navbar = () => (
     </div>
     <div className="navbar-center">
       <a href="./" className="btn btn-ghost text-xl font-normal normal-case">
-        Spotify
+        <img alt="logo" src="/Spotify_Logo.svg" className="h-full p-1" />
       </a>
     </div>
     <div className="navbar-end">
-      <button className="btn btn-ghost btn-circle">
-        <SearchIcon />
-      </button>
       <button className="btn btn-ghost btn-circle">
         <div className="indicator">
           <NotificationIcon />

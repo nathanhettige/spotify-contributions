@@ -37,6 +37,6 @@
   }
 
   .btn {
-    @apply text-base-100;
+    @apply text-white
   }
 }
