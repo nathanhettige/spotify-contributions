@@ -16,7 +16,8 @@ module.exports = {
           info: '#3ABFF8',
           success: '#1A7E36',
           warning: '#9A6601',
-          error: '#D0242E'
+          error: '#D0242E',
+          'info-content': '#656d76'
         }
       }
     ]

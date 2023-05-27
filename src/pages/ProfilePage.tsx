@@ -17,16 +17,16 @@ function ProfilePage() {
   return (
     <>
       <Navbar />
-      <div className="mx-4 py-4">
-        <section className="flex">
-          <div className="avatar mr-6 w-24">
-            <div className="text-neutral-content bg-disabled w-full rounded-full ring ring-[rgb(207,215,222)]">
+      <div className="mx-4">
+        <section className="grid w-full grid-cols-[1fr,5fr] items-center">
+          <div className="avatar w-full">
+            <div className="text-neutral-content bg-disabled h-full w-full rounded-full ring ring-[rgb(207,215,222)]">
               <img alt="Profile" src={profile?.images[0]?.url} />
             </div>
           </div>
-          <div className="flex flex-col justify-center py-4">
-            <h6>{profile?.display_name}</h6>
-            <p className="text-sm font-light">
+          <div className="ml-4 py-4">
+            <p className="text-2xl font-semibold">{profile?.display_name}</p>
+            <p className="text-info-content text-xl font-light">
               {profile?.followers.total} Followers
             </p>
           </div>
