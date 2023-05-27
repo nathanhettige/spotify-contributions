@@ -1,7 +1,8 @@
+import { Navbar } from '@theme/components';
 import useSpotifyAuth from '../api/SpotifyAuth/useSpotifyAuth';
-import { useCheckIfUsersFollowPlaylist } from '../api/useCheckIfUsersFollowPlaylist';
-import { useProfile } from '../api/useProfile';
-import { useUsersPlaylists } from '../api/useUsersPlaylists';
+import { useCheckIfUsersFollowPlaylist } from '../api/SpotifyHooks/useCheckIfUsersFollowPlaylist';
+import { useProfile } from '../api/SpotifyHooks/useProfile';
+import { useUsersPlaylists } from '../api/SpotifyHooks/useUsersPlaylists';
 
 function ProfilePage() {
   const { accessToken } = useSpotifyAuth();
@@ -20,17 +21,23 @@ function ProfilePage() {
   );
 
   return (
-    <div className="flex flex-col">
-      <img
-        style={{ width: '100px' }}
-        alt="Profile"
-        src={profile?.images[0]?.url}
-      />
-      <div>Welcome {profile?.display_name}</div>
-      <div>Followers: {profile?.followers.total}</div>
-      <div>Do you follow Torah: {torah?.[0].toString()}</div>
-      <div>Playlists count: {playlists?.total}</div>
-    </div>
+    <>
+      <Navbar />
+      <section className="mx-4 py-4">
+        <div className="flex">
+          <div className="avatar mr-6 w-24">
+            <div className="bg-neutral-focus text-neutral-content w-full rounded-full ring ring-[rgb(207,215,222)]">
+              <img alt="Profile" src={profile?.images[0]?.url} />
+            </div>
+          </div>
+          <div className="flex flex-col justify-center py-4">
+            <h6>{profile?.display_name}</h6>
+            <p className="text-sm">{profile?.followers.total} Followers</p>
+          </div>
+        </div>
+        <div className="divider"></div>
+      </section>
+    </>
   );
 }
 
