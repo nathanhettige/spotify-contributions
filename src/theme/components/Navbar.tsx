@@ -86,7 +86,7 @@ export const Navbar = () => (
       </div>
     </div>
     <div className="navbar-center">
-      <a href="./" className="btn btn-ghost text-xl normal-case">
+      <a href="./" className="btn btn-ghost text-xl font-normal normal-case">
         Spotify
       </a>
     </div>
