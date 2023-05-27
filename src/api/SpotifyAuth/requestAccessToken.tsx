@@ -1,4 +1,4 @@
-export const requestAccessToken = async (code: string) => {
+export const requestAccessToken = async (code: string): Promise<string> => {
   // const existingToken = localStorage.getItem('access_token');
 
   const codeVerifier = localStorage.getItem('code_verifier');
@@ -11,24 +11,19 @@ export const requestAccessToken = async (code: string) => {
     code_verifier: codeVerifier as string
   });
 
-  fetch('https://accounts.spotify.com/api/token', {
+  const response = await fetch('https://accounts.spotify.com/api/token', {
     method: 'POST',
     headers: {
       'Content-Type': 'application/x-www-form-urlencoded'
     },
     body
-  })
-    .then(async (response) => {
-      if (!response.ok) {
-        throw new Error(`HTTP status ${response.status}`);
-      }
-      return await response.json();
-    })
-    .then((data) => {
-      localStorage.setItem('access_token', data.access_token);
-      // Need to deal with refresh tokens
-    })
-    .catch((error) => {
-      console.error('Error:', error);
-    });
+  });
+
+  if (!response.ok) {
+    throw new Error('Request access token failed)');
+  }
+
+  const json = await response.json();
+
+  return json.access_token;
 };

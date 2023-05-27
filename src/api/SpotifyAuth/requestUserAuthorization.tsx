@@ -3,7 +3,6 @@ export const requestUserAuthorization = async () => {
   const codeChallenge = await generateCodeChallenge(codeVerifier);
 
   localStorage.setItem('code_verifier', codeVerifier);
-  console.log(codeVerifier);
 
   // Redirect to Spotify login
   window.location.href = `https://accounts.spotify.com/authorize?${getCodeChallengeQueryParams(

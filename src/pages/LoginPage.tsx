@@ -1,4 +1,4 @@
-import { useSpotifyLogin } from '../api/Auth/useSpotifyLogin';
+import { useSpotifyLogin } from '../api/SpotifyAuth/useSpotifyLogin';
 
 function LoginPage() {
   const { loading, redirectToLogin } = useSpotifyLogin();

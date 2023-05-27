@@ -1,27 +1,42 @@
 import { PageLoading } from '@ui/utils/PageLoading';
 import { lazy, Suspense } from 'react';
-import { createBrowserRouter } from 'react-router-dom';
+import { createBrowserRouter, RouterProvider } from 'react-router-dom';
 import LoginPage from './pages/LoginPage';
+import ProfilePage from './pages/ProfilePage';
+import useAuth from './api/SpotifyAuth/useSpotifyAuth';
 
 /* Code split theme page */
 const ThemePage = lazy(async () => await import('./pages/ThemePage'));
 
-const router = createBrowserRouter(
-  [
-    {
-      path: '/',
-      element: <LoginPage />
-    },
-    {
-      path: '/theme',
-      element: (
-        <Suspense fallback={<PageLoading />}>
-          <ThemePage />
-        </Suspense>
-      )
-    }
-  ],
-  { basename: `${import.meta.env.BASE_URL}` }
-);
+const Router = () => {
+  const { accessToken } = useAuth();
 
-export default router;
+  const router = createBrowserRouter(
+    accessToken == null
+      ? [
+          {
+            path: '/',
+            element: <LoginPage />
+          },
+          {
+            path: '/theme',
+            element: (
+              <Suspense fallback={<PageLoading />}>
+                <ThemePage />
+              </Suspense>
+            )
+          }
+        ]
+      : [
+          {
+            path: '/',
+            element: <ProfilePage />
+          }
+        ],
+    { basename: `${import.meta.env.BASE_URL}` }
+  );
+
+  return <RouterProvider router={router} />;
+};
+
+export default Router;

@@ -1,17 +1,19 @@
 import React from 'react';
 import ReactDOM from 'react-dom/client';
-import { RouterProvider } from 'react-router-dom';
 import './index.css';
 import { QueryClientProvider } from 'react-query';
 import { queryClient } from './api/ReactQueryClient';
 import { ReactQueryDevtools } from 'react-query/devtools';
-import router from './router';
+import Router from './router';
+import { SpotifyAuthProvider } from './api/SpotifyAuth/useSpotifyAuth';
 
 ReactDOM.createRoot(document.getElementById('root') as HTMLElement).render(
   <React.StrictMode>
     <QueryClientProvider client={queryClient}>
-      <ReactQueryDevtools />
-      <RouterProvider router={router} />
+      <SpotifyAuthProvider>
+        <ReactQueryDevtools />
+        <Router />
+      </SpotifyAuthProvider>
     </QueryClientProvider>
   </React.StrictMode>
 );
