@@ -18,7 +18,7 @@ function ProfilePage() {
       <section className="mx-4 py-4">
         <div className="flex">
           <div className="avatar mr-6 w-24">
-            <div className="bg-neutral-focus text-neutral-content w-full rounded-full ring ring-[rgb(207,215,222)]">
+            <div className="bg-disabled text-neutral-content w-full rounded-full ring ring-[rgb(207,215,222)]">
               <img alt="Profile" src={profile?.images[0]?.url} />
             </div>
           </div>
