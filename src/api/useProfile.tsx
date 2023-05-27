@@ -1,6 +1,21 @@
 import { useQuery } from 'react-query';
 
-async function fetchProfile(token: string): Promise<object> {
+interface Profile {
+  display_name: string;
+  followers: Follower;
+  images: Image[];
+}
+
+interface Follower {
+  href: string;
+  total: number;
+}
+
+interface Image {
+  url: string;
+}
+
+async function fetchProfile(token: string): Promise<Profile> {
   const result = await fetch('https://api.spotify.com/v1/me', {
     method: 'GET',
     headers: { Authorization: `Bearer ${token}` }
@@ -9,7 +24,7 @@ async function fetchProfile(token: string): Promise<object> {
   return await result.json();
 }
 
-const useProfile = (token: string) =>
+export const useProfile = (token: string) =>
   useQuery({
     queryKey: ['profile', token],
     queryFn: async () => await fetchProfile(token)

@@ -7,12 +7,12 @@ import {
 } from 'react';
 
 interface ISpotifyAuthContext {
-  accessToken: string | null;
+  accessToken: string;
   setAccessToken: (token: string) => void;
 }
 
 const AuthContext = createContext<ISpotifyAuthContext>({
-  accessToken: null,
+  accessToken: '',
   setAccessToken: (s) => {}
 });
 
@@ -21,7 +21,7 @@ export function SpotifyAuthProvider({
 }: {
   children: ReactNode;
 }): JSX.Element {
-  const [accessToken, setAccessToken] = useState<string | null>(null);
+  const [accessToken, setAccessToken] = useState<string>('');
 
   const initialState = useMemo(
     () => ({
