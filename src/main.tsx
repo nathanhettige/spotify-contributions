@@ -1,5 +1,6 @@
 import React from 'react';
 import ReactDOM from 'react-dom/client';
+import 'remixicon/fonts/remixicon.css';
 import './index.css';
 import { QueryClientProvider } from 'react-query';
 import { queryClient } from './api/ReactQueryClient';

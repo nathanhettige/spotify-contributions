@@ -2184,6 +2184,11 @@ regexpp@^3.0.0, regexpp@^3.2.0:
   resolved "https://registry.yarnpkg.com/regexpp/-/regexpp-3.2.0.tgz#0425a2768d8f23bad70ca4b90461fa2f1213e1b2"
   integrity sha512-pq2bWo9mVD43nbts2wGv17XLiNLya+GklZ8kaDLV2Z08gDCsGpnKn9BFMepvWuHCbyVvY7J5o5+BVvoQbmlJLg==
 
+remixicon@^3.3.0:
+  version "3.3.0"
+  resolved "https://registry.yarnpkg.com/remixicon/-/remixicon-3.3.0.tgz#2d610706a98a4bed093e9d5c2a28551632b11c68"
+  integrity sha512-iNeRbwVgd8Ef467IjMd/+joFWSBOYfqsLtxtSzsS8fWn75a1H7sgGu5uWE4c3NLjP2C1giFlx8gw63qZd96yJQ==
+
 remove-accents@0.4.2:
   version "0.4.2"
   resolved "https://registry.yarnpkg.com/remove-accents/-/remove-accents-0.4.2.tgz#0a43d3aaae1e80db919e07ae254b285d9e1c7bb5"

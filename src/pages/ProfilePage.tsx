@@ -1,18 +1,19 @@
 import { Navbar } from '@theme/components';
 import useSpotifyAuth from '../api/SpotifyAuth/useSpotifyAuth';
 import { useProfile } from '../api/SpotifyHooks/useProfile';
+import { useUsersPlaylists } from '../api/SpotifyHooks/useUsersPlaylists';
+import { PinnedRepo } from '@ui/PinnedRepo';
 
 // TODO remove query params from this page
 
 function ProfilePage() {
   const { accessToken } = useSpotifyAuth();
   const { data: profile } = useProfile(accessToken);
-
-  // const { data: playlists } = useUsersPlaylists(
-  //   accessToken,
-  //   profile?.id as string,
-  //   !(profile == null)
-  // );
+  const { data: playlists } = useUsersPlaylists(
+    accessToken,
+    profile?.id as string,
+    !(profile == null)
+  );
 
   return (
     <>
@@ -35,7 +36,15 @@ function ProfilePage() {
         <div className="divider"></div>
 
         <section>
-          <p>Pinned</p>
+          <p className="mb-2">Pinned</p>
+          <div className="space-y-3">
+            {playlists?.items
+              .sort((x, y) => y.tracks.total - x.tracks.total)
+              .slice(0, 6)
+              .map((i) => {
+                return <PinnedRepo key={i.id} playlist={i} />;
+              })}
+          </div>
         </section>
 
         <div className="divider"></div>
