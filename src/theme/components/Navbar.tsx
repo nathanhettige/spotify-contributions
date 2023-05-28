@@ -35,20 +35,7 @@ const NotificationIcon = () => (
 const navLinks: Array<{
   title: string;
   path: string;
-}> = [
-  {
-    title: 'Homepage',
-    path: './'
-  },
-  {
-    title: 'Portfolio',
-    path: './'
-  },
-  {
-    title: 'About',
-    path: './'
-  }
-];
+}> = [];
 
 export const Navbar = () => (
   <div className="navbar bg-secondary">
