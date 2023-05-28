@@ -8,11 +8,11 @@ import { PinnedRepo } from '@ui/PinnedRepo';
 
 function ProfilePage() {
   const { accessToken } = useSpotifyAuth();
-  const { data: profile } = useProfile(accessToken);
+  const { data: profile, isSuccess } = useProfile(accessToken);
   const { data: playlists } = useUsersPlaylists(
     accessToken,
     profile?.id as string,
-    !(profile == null)
+    isSuccess
   );
 
   return (
@@ -26,7 +26,9 @@ function ProfilePage() {
             </div>
           </div>
           <div className="ml-4 py-4">
-            <p className="text-2xl font-semibold">{profile?.display_name}</p>
+            <p className="text-primary-content text-2xl font-semibold">
+              {profile?.display_name}
+            </p>
             <p className="text-info-content text-xl font-light">
               {profile?.followers.total} Followers
             </p>
@@ -36,7 +38,7 @@ function ProfilePage() {
         <div className="divider"></div>
 
         <section>
-          <p className="mb-2">Pinned</p>
+          <p className="text-primary-content mb-2">Pinned</p>
           <div className="space-y-3">
             {playlists?.items
               .sort((x, y) => y.tracks.total - x.tracks.total)
@@ -50,7 +52,9 @@ function ProfilePage() {
         <div className="divider"></div>
 
         <section>
-          <p>387 contributions in the last year</p>
+          <p className="text-primary-content">
+            387 contributions in the last year
+          </p>
           <div id="cal-heatmap"></div>
         </section>
       </div>

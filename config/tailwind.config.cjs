@@ -1,14 +1,26 @@
 /** @type {import('tailwindcss').Config} */
+const defaultTheme = require('tailwindcss/defaultTheme');
+
 module.exports = {
   content: ['./index.html', './src/**/*.{js,ts,jsx,tsx}'],
   theme: {
-    extend: {}
+    extend: {
+      fontFamily: {
+        sans: [
+          'system-ui',
+          '-apple-system',
+          'Segoe UI',
+          ...defaultTheme.fontFamily.sans
+        ]
+      }
+    }
   },
   daisyui: {
     themes: [
       {
         mytheme: {
           primary: 'rgb(30,137,60)',
+          'primary-content': '#1F2328',
           secondary: 'rgb(36,40,47)',
           accent: 'rgb(30,110,221)',
           neutral: '#1E893C',

@@ -43,7 +43,7 @@ export const useUsersPlaylists = (
   enabled: boolean
 ) =>
   useQuery({
-    queryKey: ['usersPlylists', userId, token],
+    queryKey: ['usersPlaylists', userId, token],
     queryFn: async () => await fetchUsersPlaylists(token, userId),
     enabled
   });
