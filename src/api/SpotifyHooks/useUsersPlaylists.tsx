@@ -5,8 +5,21 @@ interface Playlists {
   items: Playlist[];
 }
 
-interface Playlist {
+export interface ExternalUrl {
+  spotify: string;
+}
+
+export interface Playlist {
+  id: string;
   name: string;
+  tracks: Tracks;
+  description: string;
+  external_urls: ExternalUrl;
+}
+
+interface Tracks {
+  href: string;
+  total: number;
 }
 
 async function fetchUsersPlaylists(
@@ -30,7 +43,7 @@ export const useUsersPlaylists = (
   enabled: boolean
 ) =>
   useQuery({
-    queryKey: ['usersPlylists', userId, token],
+    queryKey: ['usersPlaylists', userId, token],
     queryFn: async () => await fetchUsersPlaylists(token, userId),
     enabled
   });

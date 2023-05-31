@@ -35,4 +35,8 @@
   .column-span-all {
     column-span: all;
   }
+
+  .btn {
+    @apply text-white;
+  }
 }

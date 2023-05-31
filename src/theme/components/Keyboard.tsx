@@ -2,7 +2,7 @@ export const Keyboard = (
   <div>
     <div className="[&_kbd]:kbd-sm sm:[&_kbd]:kbd-md">
       <div className="my-1 flex w-full justify-center gap-1">
-        <kbd className="kbd ">q</kbd>
+        <kbd className="kbd">q</kbd>
         <kbd className="kbd">w</kbd>
         <kbd className="kbd">e</kbd>
         <kbd className="kbd">r</kbd>

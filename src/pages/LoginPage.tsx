@@ -7,7 +7,7 @@ function LoginPage() {
     <div className="flex h-screen">
       <button
         onClick={redirectToLogin}
-        className="text-md btn-primary btn m-auto"
+        className="text-md btn-primary btn text-neutral m-auto"
       >
         Login with Spotify
       </button>
