@@ -8,7 +8,8 @@
     "standard-with-typescript",
     "plugin:react/jsx-runtime",
     "plugin:jsx-a11y/recommended",
-    "plugin:react-hooks/recommended"
+    "plugin:react-hooks/recommended",
+    "prettier"
   ],
   "settings": {
     "react": {
@@ -24,23 +25,6 @@
   "ignorePatterns": ["vite.config.ts", "*.config.cjs"],
   "plugins": ["react"],
   "rules": {
-    "@typescript-eslint/semi": "off",
-    "@typescript-eslint/explicit-function-return-type": "off",
-    "@typescript-eslint/space-before-function-paren": "off",
-    "@typescript-eslint/indent": "off",
-    "@typescript-eslint/member-delimiter-style": [
-      "warn",
-      {
-        "multiline": {
-          "delimiter": "semi",
-          "requireLast": true
-        },
-        "singleline": {
-          "delimiter": "semi",
-          "requireLast": false
-        },
-        "multilineDetection": "brackets"
-      }
-    ]
+    "@typescript-eslint/explicit-function-return-type": "off"
   }
 }

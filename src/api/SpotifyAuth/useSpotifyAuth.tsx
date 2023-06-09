@@ -23,13 +23,10 @@ export function SpotifyAuthProvider({
 }): JSX.Element {
   const [accessToken, setAccessToken] = useState<string>('');
 
-  const initialState = useMemo(
-    () => ({
-      accessToken,
-      setAccessToken
-    }),
-    [accessToken]
-  );
+  const initialState = {
+    accessToken,
+    setAccessToken
+  };
 
   return (
     <AuthContext.Provider value={initialState}>{children}</AuthContext.Provider>
