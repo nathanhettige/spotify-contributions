@@ -1,13 +1,19 @@
-import { type ReactNode, useState, createContext, useContext } from 'react';
+import {
+  type ReactNode,
+  useState,
+  createContext,
+  useContext,
+  useEffect
+} from 'react';
 
 interface ISpotifyAuthContext {
-  accessToken: string;
+  accessToken: string | null;
   setAccessToken: (token: string) => void;
 }
 
 const AuthContext = createContext<ISpotifyAuthContext>({
-  accessToken: '',
-  setAccessToken: (s) => {}
+  accessToken: null,
+  setAccessToken: () => {}
 });
 
 export function SpotifyAuthProvider({
@@ -15,7 +21,17 @@ export function SpotifyAuthProvider({
 }: {
   children: ReactNode;
 }): JSX.Element {
-  const [accessToken, setAccessToken] = useState<string>('');
+  const [accessToken, setAccessToken] = useState<null | string>(null);
+
+  useEffect(() => {
+    const tokenExpiry = Number.parseInt(
+      localStorage.getItem('token_expiry') ?? '0'
+    );
+
+    if (tokenExpiry > Date.now())
+      // TODO refresh token
+      setAccessToken(localStorage.getItem('access_token'));
+  }, []);
 
   const initialState = {
     accessToken,

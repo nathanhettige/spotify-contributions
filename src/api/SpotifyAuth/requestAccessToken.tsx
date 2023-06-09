@@ -1,6 +1,12 @@
-export const requestAccessToken = async (code: string): Promise<string> => {
-  // const existingToken = localStorage.getItem('access_token');
+interface AccessTokenResponse {
+  accessToken: string;
+  expiresIn: number;
+  refreshToken: string;
+}
 
+export const requestAccessToken = async (
+  code: string
+): Promise<AccessTokenResponse> => {
   const codeVerifier = localStorage.getItem('code_verifier');
 
   const body = new URLSearchParams({
@@ -23,7 +29,12 @@ export const requestAccessToken = async (code: string): Promise<string> => {
     throw new Error('Request access token failed)');
   }
 
-  const json = await response.json();
+  // eslint-disable-next-line @typescript-eslint/naming-convention
+  const { access_token, expires_in, refresh_token } = await response.json();
 
-  return json.access_token;
+  return {
+    accessToken: access_token,
+    refreshToken: refresh_token,
+    expiresIn: expires_in
+  };
 };

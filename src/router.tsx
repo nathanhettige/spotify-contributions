@@ -12,7 +12,7 @@ const Router = () => {
   const { accessToken } = useAuth();
 
   const router = createBrowserRouter(
-    accessToken === ''
+    accessToken === null
       ? [
           {
             path: '/',
