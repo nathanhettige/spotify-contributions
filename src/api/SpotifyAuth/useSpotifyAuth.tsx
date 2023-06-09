@@ -1,10 +1,4 @@
-import {
-  type ReactNode,
-  useState,
-  createContext,
-  useContext,
-  useMemo
-} from 'react';
+import { type ReactNode, useState, createContext, useContext } from 'react';
 
 interface ISpotifyAuthContext {
   accessToken: string;
