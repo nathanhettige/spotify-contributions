@@ -1,3 +1,6 @@
+/**
+ * Gets and sets the code verifier
+ */
 export const requestUserAuthorization = async () => {
   const codeVerifier = window.crypto.randomUUID() + window.crypto.randomUUID(); // Compatability issues with older browsers
   const codeChallenge = await generateCodeChallenge(codeVerifier);

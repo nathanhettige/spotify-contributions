@@ -8,9 +8,9 @@ import { PinnedRepo } from '@ui/PinnedRepo';
 
 function ProfilePage() {
   const { accessToken } = useSpotifyAuth();
-  const { data: profile, isSuccess } = useProfile(accessToken);
+  const { data: profile, isSuccess } = useProfile(accessToken!);
   const { data: playlists } = useUsersPlaylists(
-    accessToken,
+    accessToken!,
     profile?.id as string,
     isSuccess
   );

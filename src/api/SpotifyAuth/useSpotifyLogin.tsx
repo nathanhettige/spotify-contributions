@@ -10,7 +10,7 @@ import useAuth from './useSpotifyAuth';
  */
 export const useSpotifyLogin = () => {
   const [loading, setLoading] = useState(false);
-  const { setAccessToken } = useAuth();
+  const { setAccessToken, accessToken } = useAuth();
 
   useEffect(() => {
     // Request access token if authorization code in URL params
@@ -20,13 +20,24 @@ export const useSpotifyLogin = () => {
 
     if (code !== null && codeVerifier !== null) {
       setLoading(true);
-      void requestAccessToken(code).then((token) => {
-        setAccessToken(token);
-      });
+      void requestAccessToken(code).then(
+        ({ accessToken, expiresIn, refreshToken }) => {
+          // Update state
+          setAccessToken(accessToken);
+          // Store tokens in local storage
+          localStorage.setItem('access_token', accessToken);
+          localStorage.setItem(
+            'token_expiry',
+            (Date.now() + expiresIn * 1000).toString()
+          );
+          localStorage.setItem('refresh_token', refreshToken);
+        }
+      );
     }
-  }, [setAccessToken]);
+  }, [setAccessToken, accessToken]);
 
-  const redirectToLogin = () => {
+  const redirectToLogin = (): void => {
+    // Gets and sets code verifier in local storage
     requestUserAuthorization().catch(console.error);
   };
 
